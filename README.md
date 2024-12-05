@@ -1,4 +1,4 @@
-# Rage Project
+# Range Project
 
 Este é um projeto básico de API utilizando **Node.js** com o framework **Express.js**. Ele implementa funcionalidades para listar, adicionar e gerenciar usuários. O projeto inclui um frontend simples para interação com a API.
 
