@@ -32,7 +32,7 @@ let users = [
 ];
 
 app.listen(PORT, () => {
-  console.log(`Servidor rodando no http://localhost:${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
 
 app.get("/", (request, response) => {
