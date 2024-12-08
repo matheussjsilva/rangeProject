@@ -12,7 +12,7 @@ app.use(cors());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "/frontend")));
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 let users = [
   {
     id: 1,
