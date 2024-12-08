@@ -12,7 +12,7 @@ document.getElementById("user-form").addEventListener("submit", (event) => {
 });
 
 function fetchUsers() {
-  fetch("http://localhost:3000/users")
+  fetch("https://rangeproject-production.up.railway.app/users")
     .then((response) => response.json())
     .then((data) => {
       displayUsers(data);
@@ -50,7 +50,7 @@ function addUser() {
     age: parseInt(age, 10),
   };
 
-  fetch("http://localhost:3000/users", {
+  fetch("https://rangeproject-production.up.railway.app/users", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
