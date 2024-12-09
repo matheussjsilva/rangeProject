@@ -28,6 +28,19 @@ button {
   cursor: pointer;
 }
 
+li button {
+  padding: 5px 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+li button:hover {
+  background-color: #c0392b;
+}
+
 #user-list ul {
   list-style-type: none;
   padding: 0;

@@ -1,4 +1,5 @@
 document.getElementById("list-users-btn").addEventListener("click", () => {
+  console.log("Botão de Listar Usuários clicado");
   fetchUsers();
 });
 
@@ -12,6 +13,7 @@ document.getElementById("user-form").addEventListener("submit", (event) => {
 });
 
 function fetchUsers() {
+  console.log("Buscando usuários...");
   fetch("https://rangeproject-production.up.railway.app/users")
     .then((response) => response.json())
     .then((data) => {
@@ -29,6 +31,14 @@ function displayUsers(users) {
   users.forEach((user) => {
     const li = document.createElement("li");
     li.textContent = `ID: ${user.id}, Nome: ${user.name}, Idade: ${user.age}`;
+    userList.appendChild(li);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Excluir";
+    deleteButton.style.marginLeft = "10px";
+    deleteButton.addEventListener("click", () => deleteUser(user.id));
+
+    li.appendChild(deleteButton);
     userList.appendChild(li);
   });
 
@@ -74,5 +84,23 @@ function addUser() {
       const errorMessage = document.getElementById("error-message");
       errorMessage.textContent = error.message;
       errorMessage.classList.remove("hidden");
+    });
+}
+
+function deleteUser(userId) {
+  fetch(`https://rangeproject-production.up.railway.app/users/${userId}`, {
+    method: "DELETE",
+  })
+    .then((response) => {
+      console.log("Resposta do servidor:", response);
+      if (!response.ok) {
+        throw new Error("Erro ao deletar o usuário");
+      }
+      alert("Usuário deletado com sucesso!");
+      fetchUsers();
+    })
+    .catch((error) => {
+      console.error("Erro", error);
+      alert("Não foi possível deletar o usuário.");
     });
 }
