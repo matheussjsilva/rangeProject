@@ -77,3 +77,11 @@ app.post("/users", (request, response) => {
 
   return response.status(StatusCodes.CREATED).send(newUser);
 });
+
+app.delete("/users/:userId", (request, response) => {
+  const userId = Number(request.params.userId);
+  users = users.filter((user) => {
+    return user.id !== Number(userId);
+  });
+  return response.status(StatusCodes.NO_CONTENT).send();
+});
